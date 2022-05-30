@@ -44,11 +44,13 @@ def save_traits(collection) -> None:
     market_cap = collection_data["collection"]["stats"]["market_cap"]
 
     # Write JSON file
-    nft_json = {}
-    nft_json["name"] = collction_name
-    nft_json["market_cap"] = market_cap
-    nft_json["external_url"] = collction_url
-    nft_json["traits"] = collection_traits
+    nft_json = {
+        "name": collction_name,
+        "market_cap": market_cap,
+        "external_url": collction_url,
+        "traits": collection_traits,
+    }
+
     with open(f"./{collection}.json", "w") as outfile:
         json.dump(nft_json, outfile, indent=2)
 
@@ -91,13 +93,15 @@ def save_asset(index, collection) -> None:
     print(f"  | price: {nft_price}")
 
     # Write JSON file
-    nft_json = {}
-    nft_json["name"] = nft_name
-    nft_json["token_id"] = token_id
-    nft_json["image_url"] = image_url
-    nft_json["contract_address"] = contract_address
-    nft_json["price"] = nft_price
-    nft_json["traits"] = traits_json
+    nft_json = {
+        "name": nft_name,
+        "token_id": token_id,
+        "image_url": image_url,
+        "contract_address": contract_address,
+        "price": nft_price,
+        "traits": traits_json,
+    }
+
     with open(f"./{token_id:>05}.json", "w") as outfile:
         json.dump(nft_json, outfile, indent=2)
 
